@@ -12,7 +12,7 @@ int num = int.Parse(Console.ReadLine());
 
 
 
-if (num<99 || num>1000)
+if   ((num <-999|| num>999) || (num>-100 && num<100))
 {
     Console.WriteLine("Число не является трехзначным");
 }
@@ -20,7 +20,12 @@ else
 {
   num = num / 10;
   num = num % 10;
+  if (num < 0) 
+  {
+    num= -1 * num;
+  }
   Console.WriteLine($"Вторая цифра заданного числа:{num}");
+  
 }
 
 
