@@ -5,3 +5,23 @@
 //78 -> третьей цифры нет
 
 //32679 -> 6
+
+
+
+Console.Write("Введите число:");
+int num = int.Parse(Console.ReadLine());
+
+
+
+if  (num>-100 && num<100)
+{
+    Console.WriteLine("Третьей цифры нет");
+}
+else
+{
+  num = num / 100;
+  num = num % 10;
+  if (num < 0) {num=-1*num;}
+  Console.WriteLine($"Третья цифра заданного числа:{num}");
+}
+
