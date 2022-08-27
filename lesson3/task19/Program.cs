@@ -12,22 +12,27 @@
 Console.Write("Введите число:");
 int num = int.Parse(Console.ReadLine());
 
+int count=1,NumTemp=num;
 
-if (num < 10000 || num > 99999)
+while (NumTemp/10>0)          // Ввела счетчик количества цифр , чтобы легко менять задачу под семизначные и тд
+{
+    count++;
+    NumTemp=NumTemp/10;
+}
+
+if (count>5 || count<5)
 {
    Console.WriteLine("Число не является пятизначным");
 }
 else
-{
+{   
     int temp=10000;
     int temp1=10;
-    int test,test1,count=3,count1=0;
+    int test,test1,count1=0;
+    count=count/2 ;
 
-    //сount=(длина строки/2)+1 
-    //функцию считывания длины строки нашлатолько для строк и массивов, поэтому оставила числом в коде
-    
 
-    for (int i=1;i<count;i++)
+    for (int i=1;i<=count;i++)
    {
     test=num/temp;
     test1=num%temp1;
