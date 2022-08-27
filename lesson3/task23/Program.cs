@@ -9,7 +9,10 @@
 
 Console.Write("Введите число: ");
 int num = int.Parse(Console.ReadLine());
-
+if (num<=0)
+{
+    Console.WriteLine("Я не смогу вывести число от 1 до N, тк число меньше или равно нулю");
+}
 
 for ( int i = 1; i <= num; i++)
 {
