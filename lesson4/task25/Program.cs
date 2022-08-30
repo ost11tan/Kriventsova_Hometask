@@ -9,7 +9,7 @@
 
 
 
-double Pow(int number, int pow)
+double Pow(int number, int pow) //при больших числах int выдает отрицательные числа из-за переполнения
 {
     double result = 1;
     for (int i = 1; i <= pow; i++)
