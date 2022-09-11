@@ -1,14 +1,11 @@
-﻿//Задача 50. Напишите программу, которая на вход принимает число и генерирует случайный двумерный массив, и возвращает индексы этого элемента или же указание, что такого элемента нет.
-
+﻿//Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+//
 //Например, задан массив:
-
 //1 4 7 2
-
 //5 9 2 3
-
 //8 4 2 4
+//Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
-//17 -> такого числа в массиве нет
 
 
 
@@ -47,29 +44,19 @@ void PrintArray(int[,] array)
     }
 }
 
-int SeаrchNumber(int[,] array, int num) 
+void AverageColumn(int[,] array)
 {
-    int flag = 0;
-    for (int i = 0; i < array.GetLength(0); i++)
+    for (int j = 0; j < array.GetLength(1); j++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        double summ = 0;                                        //если оставить int,то отбрасывает остаток при выводе переменной average
+        double rows = array.GetLength(0);                       //если оставить int,то отбрасывает остаток при выводе переменной average
+        for (int i = 0; i < array.GetLength(0); i++)
         {
-            if (array[i, j] == num)
-            {
-                flag++;
-                Console.WriteLine($"i={i},j={j}");
-            }
-            if (flag > 0)
-            {
-                break;
-            }
+            summ += array[i, j];
         }
-        if (flag > 0)
-        {
-            break;
-        }
+        double average = summ / rows;
+        Console.Write($"{average:f3}\t");
     }
-    return flag;
 }
 
 Console.WriteLine("Введите количество строк:");
@@ -85,11 +72,6 @@ Console.WriteLine();
 
 int[,] myArray = GetArray(m, n, min, max);
 PrintArray(myArray);
+Console.WriteLine();
 
-Console.WriteLine("Введите искомое число: ");
-int numer = int.Parse(Console.ReadLine());
-
-if (SeаrchNumber(myArray, numer) == 0)
-{
-    Console.WriteLine("Такого числа нет");
-}
+AverageColumn(myArray);
