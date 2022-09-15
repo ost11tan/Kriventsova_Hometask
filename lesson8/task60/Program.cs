@@ -8,8 +8,6 @@
 
 
 
-//проверка на x *y*z <90
-
 bool InArray(int[,,] arr, int number)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
@@ -18,11 +16,12 @@ bool InArray(int[,,] arr, int number)
         {
             for (int k = 0; k < arr.GetLength(2); k++)
             {
-                if(arr[i,j,k]==number) return true;
+                if (arr[i, j, k] == number)
+                    return true;
             }
         }
     }
-     return false;
+    return false;
 }
 
 int[,,] GetArray(int x, int y, int z)
@@ -36,14 +35,13 @@ int[,,] GetArray(int x, int y, int z)
             {
                 while (true)
                 {
-                    int temp = new Random().Next(10,100);
+                    int temp = new Random().Next(10, 100);
 
                     if (!InArray(result, temp))
                     {
                         result[i, j, k] = temp;
                         break;
                     }
-
                 }
             }
         }
@@ -66,9 +64,6 @@ void PrintArray(int[,,] array)
     }
 }
 
-
-
-
 Console.WriteLine("Введите количество значений по оси X:");
 int X = int.Parse(Console.ReadLine());
 
@@ -78,12 +73,14 @@ int Y = int.Parse(Console.ReadLine());
 Console.WriteLine("Введите количество значений по оси Z");
 int Z = int.Parse(Console.ReadLine());
 
+if ((X * Y * Z) > 90)
+{
+    Console.WriteLine("Количество уникальных элементов меньше количества элементов массива");
+}
+else
+{
+    int[,,] myArray = GetArray(X, Y, Z);
+    PrintArray(myArray);
 
-int[,,] myArray = GetArray(X, Y, Z);
-PrintArray(myArray);
-
-Console.WriteLine();
-
-
-
-
+    Console.WriteLine();
+}
