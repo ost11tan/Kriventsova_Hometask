@@ -10,17 +10,41 @@
 
 //проверка на x *y*z <90
 
+bool InArray(int[,,] arr, int number)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            for (int k = 0; k < arr.GetLength(2); k++)
+            {
+                if(arr[i,j,k]==number) return true;
+            }
+        }
+    }
+     return false;
+}
+
 int[,,] GetArray(int x, int y, int z)
 {
-    int[,,] result = new int[x,y,z];
-    
+    int[,,] result = new int[x, y, z];
     for (int i = 0; i < x; i++)
     {
         for (int j = 0; j < y; j++)
         {
             for (int k = 0; k < z; k++)
             {
-                result[i, j, k] = new Random().Next(10,100);
+                while (true)
+                {
+                    int temp = new Random().Next(10,100);
+
+                    if (!InArray(result, temp))
+                    {
+                        result[i, j, k] = temp;
+                        break;
+                    }
+
+                }
             }
         }
     }
@@ -37,47 +61,12 @@ void PrintArray(int[,,] array)
             {
                 Console.Write($"{array[i, j, k]} ({i},{j},{k})\t");
             }
-        } 
+        }
         Console.WriteLine();
     }
 }
 
-int [,,] ChangeArray(int[,,] array)
-{   
-    int x = array.GetLength(0);
-    int y = array.GetLength(1);
-    int z = array.GetLength(2);
 
-
-    for (int i = 0; i < x-1; i++)
-    {
-        for (int j = 0; j < y-1; j++)
-        {
-            for (int k = 0; k < z-1; k++)
-                {
-                    temp=array[i,j,k];
-                }
-        }
-    }
-    return array;
-   
-    for (int i = 0; i < x-1; i++)
-    {
-        for (int j = 0; j < y-1; j++)
-        {
-            for (int k = 0; k < z-1; k++)
-                {
-                    if ((temp=array[i,j,k+1])
-                        ||(temp=array[i,j+1,k])
-                        ||(temp=array[i+1,j,k]))
-                    {
-                      array[i,j,k+1]=new Random().Next(10,100);
-                    }
-                }
-        }
-    }
-    return array;
-}
 
 
 Console.WriteLine("Введите количество значений по оси X:");
@@ -90,12 +79,11 @@ Console.WriteLine("Введите количество значений по о�
 int Z = int.Parse(Console.ReadLine());
 
 
-int[,,] myArray = GetArray(X,Y,Z);
+int[,,] myArray = GetArray(X, Y, Z);
 PrintArray(myArray);
 
 Console.WriteLine();
-int[,,] myArray2=ChangeArray(myArray);
-PrintArray(myArray2);
+
 
 
 
