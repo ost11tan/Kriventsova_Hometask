@@ -20,7 +20,7 @@ int[,,] GetArray(int x, int y, int z)
         {
             for (int k = 0; k < z; k++)
             {
-                result[i, j, k] = new Random().Next(10,21);
+                result[i, j, k] = new Random().Next(10,1000);
             }
         }
     }
